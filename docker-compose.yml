@@ -1,0 +1,35 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app
+    command: ["npm", "run", "serve"]
+
+volumes:
+  postgres_data:

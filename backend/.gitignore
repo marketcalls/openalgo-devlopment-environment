@@ -1,0 +1,20 @@
+.DS_Store
+/venv
+/dist
+
+
+# local env files
+.env.local
+.env.*.local
+.env
+
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
