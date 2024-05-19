@@ -22,15 +22,15 @@ async def shutdown():
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "Development Environement"}
 
-@app.get("/test_postgres")
+@app.get("/postgres")
 async def test_postgres():
     query = "SELECT 1"
     result = await database.fetch_one(query=query)
     return {"PostgreSQL": result[0]}
 
-@app.get("/test_redis")
+@app.get("/redis")
 async def test_redis():
     await redis.set("key", "value")
     value = await redis.get("key")
