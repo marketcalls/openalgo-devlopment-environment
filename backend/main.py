@@ -25,13 +25,13 @@ def read_root():
     return {"Hello": "Development Environement"}
 
 @app.get("/postgres")
-async def test_postgres():
+async def postgres():
     query = "SELECT 1"
     result = await database.fetch_one(query=query)
     return {"PostgreSQL": result[0]}
 
 @app.get("/redis")
-async def test_redis():
+async def redis():
     await redis.set("key", "value")
     value = await redis.get("key")
     return {"Redis": value.decode("utf-8")}
